@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
 <body>
 	<div id="login-page">
 		<div class="container">
-			<h3 align="center" style="color:#fff"><a href="../index.html" style="color:#fff">Complaint Management System</a></h3>
+			<h3 align="center" style="color:#fff"><a href="../index.html" style="color:#fff">TUPI-Poblacion Online Complaint Management System</a></h3>
 			<hr />
 			<form class="form-login" method="post">
 				<h2 class="form-login-heading">User Registration</h2>
