@@ -10,14 +10,21 @@ if (isset($_POST['submit'])) {
 
 	// Check if contact number is exactly 11 digits and starts with "09"
 	if (preg_match("/^09[0-9]{9}$/", $contactno)) {
-		$query = mysqli_query($con, "INSERT INTO users(fullName,userEmail,password,contactNo,status) VALUES('$fullname','$email','$password','$contactno','$status')");
-		$msg = "Registration successful. Now You can login!";
+		// Check if the contact number already exists in the database
+		$query = mysqli_query($con, "SELECT * FROM users WHERE contactNo = '$contactno'");
+		$count = mysqli_num_rows($query);
+		if ($count == 0) {
+			// Contact number does not exist in the database, proceed with registration
+			$query = mysqli_query($con, "INSERT INTO users(fullName,userEmail,password,contactNo,status) VALUES('$fullname','$email','$password','$contactno','$status')");
+			$msg = "Registration successful. Now You can login!";
+		} else {
+			$msg = "Contact number already exists.";
+		}
 	} else {
 		$msg = "Contact number must be exactly 11 digits and start with '09'.";
 	}
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
